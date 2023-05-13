@@ -1,0 +1,45 @@
+Dr. Daniel Marks, looking at the screenshots, said:
+
+This sounds like what the author wants is the Hermite-Gaussian basis functions.  These are the eigenfunctions of the Fourier transform and are unimodular.
+
+They are the minimum uncertainty functions in both time and frequency.
+
+They are all expressed by a polynomial (a Hermite polynomial) multiplied by a Gaussian function.
+
+Another possibility if the signal must be bandlimited with exponential tails outside of the limit is the prolate-spheroidal wave functions.   But these are non-polynomial, more resembling Bessel functions.
+
+Similar causal functions exist which are the Laguerre functions, which is exp(-t) multiplied by a Laguerre polynomial.
+
+Michelle asked: For these functions would you just start trying to classify the things (the polynomials) that converge?
+
+Dr. Marks replied: Yes, these form a complete basis and any function can be decomposed by orthogonal expansion into Hermite-Gaussian functions (as in any other complete orthogonal basis).  What makes the Hermite-Gaussian functions unique is that they are the eigenfunctions of the Fourier transform.   They have relatively compact support in both the time and frequency domain.  For example, you could take a bit stream represented by a sequence of delta functions in the time domain and multiply them by the Hermite-Gaussian function in the frequency domain, and because the function is an eigenfunction of the Fourier transform, one would get the convolution with the same Hermite-Gaussian function in the time domain.
+
+There is no unique basis with this property, because there are only four eigenvalues of the Fourier transform: 1, +i, -1, -i, and so you can take linear combinations of eigenfunctions with the same eigenvalue (degenerate eigenvalues) and get another basis.  But this basis has the minimum uncertainty property, in which if one takes a sum of the time and frequency variances, any change to a function in the basis only increases the uncertainty.  One can use variational calculus to derive a filter for a basis with a nonuniform bandpass as well (the Hermite-Gaussian is a solution for a uniform bandpass).  I wrote a paper on this. :slightly_smiling_face:
+
+The aforementioned chicken scratches are Adaptive Spectral Apodization for Sidelobe Reduction in Optical Coherence Tomography Images, included in this directory. 
+
+Frank Brickle wrote:
+
+Interesting. This actually came up as an idea back in the 70s in sound synthesis.
+
+Have to think about this. In some ways it seems like the sort of thing the physicists would have embraced years ago if they could, because one of the implications (at first glance) would appear to be the way it eliminates Heisenberg Uncertainty.
+
+Haven't looked closely enough to get a feel for the orthogonality properties, though I suspect that might be tricky. Also, do you lose the extremely precious gains from Parseval's Equation?
+
+Interesting and clever. A lot of questions.
+
+I can't get around the suspicion that the non-stationary spectral models are equivalent to multiplication in the time domain by some time-varying signal, which of course becomes convolution on the other side of the Fourier Transform.
+
+Also I need to see a treatment of discontinuities in the modeling polynomial functions. This is a thing the Laplace transform handles beautifully.
+
+I think the problem with polynomial spectra is that you run into exactly the same issues as wavelets as far as convergence etc. are concerned. In fact I'm not convinced this isn't essentially wavelets in another guise.
+
+Or evaluation of the DFT on arbitrary paths in the unit circle, kind of like the Chirp-Z, except weirder trajectories.
+
+I really think somebody needs first to do a taxonomy of the useful polynomials, particularly wrt convergence and bounded behavior.
+
+Honestly, this polynomial spectrum stuff is so reminiscent of what a bunch of people were doing at IRCAM back in the 70s and early 80s.
+
+They were desperately trying to find real-time ways to avoid evaluating transcendental functions. Then somebody remembered CORDIC.
+
+Heh. Here's a gag. Polynomial spectra are the limiting case of multi-rate processing with an infinite number of channels.
